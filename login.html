@@ -10,5 +10,46 @@
 <body>
   111
 </body>
+<script>
+  let arr = [1, 2];
+  let str = '1230';
+  let num = 1;
+  let fn = function () {
+    console.log(111);
+  }
+  let obj = {
+    a: 'a',
+    b: 'b'
+  }
+  console.log(Object.prototype.toString.call(arr));
+  console.log(Object.prototype.toString.call(str));
+  console.log(Object.prototype.toString.call(num));
+  console.log(Object.prototype.toString.call(fn));
+  console.log(Object.prototype.toString.call(obj));
+
+  var type = function (o) {
+    var s = Object.prototype.toString.call(o);
+    return s.match(/\[object (.*?)\]/)[1].toLowerCase();
+  };
+
+  ['Null',
+    'Undefined',
+    'Object',
+    'Array',
+    'String',
+    'Number',
+    'Boolean',
+    'Function',
+    'RegExp'
+  ].forEach(t => type['is' + t] = o => type(o) === t.toLowerCase());
+  console.log(type.isNumber(num));
+  console.log(type.isArray(arr));
+
+  let arr2 = [1, , 3, 4, , , 5];
+  // console.log(arr2.indexOf(5));
+  console.log(arr2.length);
+  console.log(arr2.toString());
+  console.log(arr2.toLocaleString() === arr2.toString());
+</script>
 
 </html>
